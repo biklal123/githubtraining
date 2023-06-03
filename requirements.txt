@@ -1,0 +1,6 @@
+this is chat application
+features of chat application
+1.Emoji
+2.Type Option
+3.Colors
+4.Vibrant
