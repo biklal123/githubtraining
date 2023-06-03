@@ -1,54 +1,114 @@
-//toggle icon navbar
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+// const qrText = document.getElementById('qr-text');
+// const sizes = document.getElementById('sizes');
+// const generateBtn = document.getElementById('generateBtn');
+// const downloadBtn = document.getElementById('downloadBtn');
 
-menuIcon.onclick = () =>
-{
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+
+// const qrContainer = document.querySelector('.qr-body');
+
+// let size = sizes.value;
+// generateBtn.addEventListener('click',(e)=> 
+// {
+//     e.preventDefault();
+//     isEmptyInput();
+// });
+
+// sizes.addEventListener('change',(e)=>
+// {
+//     size = e.target.value;
+//     isEmptyInput();
+// });
+
+// downloadBtn.addEventListener('click',()=>
+// {
+//     let img = document.querySelector('.qr-body img');
+//     if(img !== null)
+//     {
+//         let imgAtrr = img.getAttribute('src');
+//         downloadBtn.setAttribute("href", imgAtrr);
+//     }
+//     else
+//     {
+//         downloadBtn.setAttribute("href", `${document.querySelector(`canvas`).toDataURL()}`);
+//     }
+// });
+
+// function isEmptyInput()
+// {
+//     if(qrText.value.length > 0)
+//     {
+//         generateQRCode();
+//     }
+//     else
+//     {
+//         alert("enter the text or URL to generate your QR code");
+//     }
+//     qrText.value.length > 0 ? generateQRCode() : alert("enter the text or URL to generate your QR code");
+// }
+// function generateQRCode()
+// {
+//     qrContainer.innerHTML = "";
+//     new QRCode(qrContainer,
+//         {
+//             text: qrText.value,
+//             height: size,
+//             width: size,
+//             colorLight: "#fff",
+//             colorDark: "#000",
+//         });
+// }
+function isEmptyInput() {
+    if (qrText.value.length > 0) {
+        generateQRCode();
+    } else {
+        alert("enter the text or URL to generate your QR code");
+    }
 }
 
-
-//scroll sections
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-
-window.scroll = () =>
-{
-    sections.forEach(sec =>
+function generateQRCode() {
+    const qrContainer = document.querySelector('.qr-body');
+    qrContainer.innerHTML = "";
+    new QRCode(qrContainer,
         {
-            let top = window.scrollY;
-            let offset = sec.offsetTop - 100;
-            let height = sec.offsetHeight;
-            let id = sec.getAttribute('id');
-            if(top >= offset && top < offset + height){
-            //active navbar links
-            navLinks.forEach(links =>
-                {
-                    links.classList.remove('active');
-                    document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-
-                });
-                // active sections for animation on scroll
-                sec.classList.add('show-animate');
-            }
-            // if want to use animation that repeats on scroll use this
-            else
-            {
-                sec.classList.remove('show-animate');
-            }
+            text: qrText.value,
+            height: size,
+            width: size,
+            colorLight: "#fff",
+            colorDark: "#000",
         });
 }
-  //sticky header
-    let header = document.querySelector('header');
 
-    header.classList.toggle('sticky', window.scrollY > 100);
+const qrText = document.getElementById('qr-text');
+const sizes = document.getElementById('sizes');
+const generateBtn = document.getElementById('generateBtn');
+const downloadBtn = document.getElementById('downloadBtn');
 
-    // remove toggle icon and navbar when click navbar links (scroll)
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
 
-    // animation footer on scroll
-    let footer = document.querySelector('footer');
+const qrContainer = document.querySelector('.qr-body');
 
-    footer.classList.toggle('show-animate',this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
+let size = sizes.value;
+generateBtn.addEventListener('click',(e)=> 
+{
+    e.preventDefault();
+    isEmptyInput();
+});
+
+sizes.addEventListener('change',(e)=>
+{
+    size = e.target.value;
+    isEmptyInput();
+});
+
+downloadBtn.addEventListener('click',()=>
+{
+    let img = document.querySelector('.qr-body img');
+    if(img !== null)
+    {
+        let imgAtrr = img.getAttribute('src');
+        downloadBtn.setAttribute("href", imgAtrr);
+    }
+    else
+    {
+        downloadBtn.setAttribute("href", `${document.querySelector(`canvas`).toDataURL()}`);
+    }
+});
