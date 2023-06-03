@@ -4,3 +4,6 @@ features of chat application
 2.Type Option
 3.Colors
 4.Vibrant
+5.payment method
+6.payment added
+7.payment history
